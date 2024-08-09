@@ -1,9 +1,30 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabaseClient";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    // Fetch data from your Supabase table
+    const fetchData = async () => {
+      const { data, error } = await supabase
+        .from("your_table_name") // Replace with your table name
+        .select("*");
+
+      if (error) {
+        console.error("Error fetching data:", error);
+      } else {
+        setData(data);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
@@ -113,6 +134,16 @@ export default function Home() {
           </p>
         </a>
       </div>
+
+      {/* Supabase data rendering */}
+      {data && (
+        <div className="text-center">
+          <h2 className="text-2xl font-semibold mb-4">Supabase Data</h2>
+          <pre className="text-sm opacity-75">
+            {JSON.stringify(data, null, 2)}
+          </pre>
+        </div>
+      )}
     </main>
   );
 }
