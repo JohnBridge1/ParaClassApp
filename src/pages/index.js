@@ -6,23 +6,32 @@ import { supabase } from "../config/supabaseClient";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    let isMounted = true; // flag to track component mounted state
+
     // Fetch data from your Supabase table
     const fetchData = async () => {
       const { data, error } = await supabase
-        .from("your_table_name") // Replace with your table name
+        .from("ClientsData") // Table's name
         .select("*");
 
       if (error) {
         console.error("Error fetching data:", error);
+        if (isMounted) setError(error.message);
       } else {
-        setData(data);
+        if (isMounted) setData(data);
       }
     };
 
     fetchData();
+
+    // Cleanup function to avoid memory leaks
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
@@ -136,12 +145,22 @@ export default function Home() {
       </div>
 
       {/* Supabase data rendering */}
-      {data && (
+      {error && (
+        <div className="text-center text-red-500">
+          <p>Error fetching data: {error}</p>
+        </div>
+      )}
+
+      {data.length > 0 ? (
         <div className="text-center">
           <h2 className="text-2xl font-semibold mb-4">Supabase Data</h2>
           <pre className="text-sm opacity-75">
             {JSON.stringify(data, null, 2)}
           </pre>
+        </div>
+      ) : (
+        <div className="text-center text-gray-500">
+          <p>No data available</p>
         </div>
       )}
     </main>
