@@ -3,16 +3,20 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-let supabase = null;
-
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error("Supabase URL or Anon Key is not set");
-} else {
-  supabase = createClient(supabaseUrl, supabaseAnonKey);
+  throw new Error("Supabase URL or Anon Key is not set");
+}
 
-  if (process.env.NODE_ENV === "development") {
-    console.log("Supabase client created successfully!");
-  }
+let supabase;
+
+try {
+  supabase = createClient(supabaseUrl, supabaseAnonKey);
+} catch (error) {
+  throw new Error(`Failed to create Supabase client: ${error.message}`);
+}
+
+if (process.env.NODE_ENV === "development") {
+  console.log("Supabase client created successfully!");
 }
 
 export { supabase };
