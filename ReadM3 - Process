@@ -1,0 +1,9 @@
+/*** This project automates the collection and storage of IPC World Rankings data for Paralympic athletes. 
+Using Deepnote as a collaborative Python environment, I wrote a web scraping script to extract athlete classifications and performance metrics directly from the official IPC World Rankings website. 
+After cleaning and formatting the data, I exported it as a CSV and seamlessly imported it into a Supabase table (classificationdata) within the ParaClassData database. ***/
+
+Key steps included:
+
+Web Scraping: Leveraged Python’s requests and BeautifulSoup to programmatically access and parse ranking data from the IPC site.
+Data Cleaning: Removed duplicates, standardized fields, and prepared a well-structured dataset ready for analysis.
+Data Integration: Imported the cleaned CSV into Supabase, enabling secure, scalable, and easily queryable storage for future applications or analyses.
