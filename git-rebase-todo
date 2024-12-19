@@ -1,0 +1,61 @@
+pick 67dfac8 Supabase.
+pick 108e278 Change.
+pick 8544a36 new change. Get rid of Hello.js
+pick 57be212 Home.js commit
+pick 5c53b2a New change (imported supabase into file.)
+pick 4db6bca New change to supabaseClient.
+pick d8b9dbf new change .
+pick f216e77 fetching supabase locally. edit import.
+pick 19b22aa fixing error with import.
+pick 43f1ac9 new change.
+pick 71a4b54 New change.
+pick 4df028e new commit change import.
+pick fe7819a new changes to supabaseClient.
+pick 32b87f1 env.local added to gitignore
+pick 0ad9595 change to gitignore
+pick a01c190 new change.
+pick 3ce799c back to previous version as the icon was visiable.
+pick 686bebf /***logo returned now that the .env.local is named the same.***/
+pick 876ee35 new change.
+pick 35a7149 new changes normal nextjs screen comes up (database not working still)
+pick bcd729c .env.local file
+pick f920bd3 Don't need the test.
+pick c8f9014 Supabase Table imported.
+pick 8f67572 Create ReadM3 - Process
+pick 84b068b Security.
+pick c5bb24e Public supabase key
+squash 2197199 new change to environment variable.
+squash 9627ba8 returned to previous version
+squash 9f0b509 Environment Variable SUPABASE.
+squash 7f3952e New change.
+
+# Rebase 9651b7b..84b068b onto 9651b7b (30 commands)
+#
+# Commands:
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message
+# e, edit <commit> = use commit, but stop for amending
+# s, squash <commit> = use commit, but meld into previous commit
+# f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+#                    commit's log message, unless -C is used, in which case
+#                    keep only this commit's message; -c is same as -C but
+#                    opens the editor
+# x, exec <command> = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop <commit> = remove commit
+# l, label <label> = label current HEAD with a name
+# t, reset <label> = reset HEAD to a label
+# m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+#         create a merge commit using the original merge commit's
+#         message (or the oneline, if no original merge commit was
+#         specified); use -c <commit> to reword the commit message
+# u, update-ref <ref> = track a placeholder for the <ref> to be updated
+#                       to this position in the new commits. The <ref> is
+#                       updated at the end of the rebase
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
