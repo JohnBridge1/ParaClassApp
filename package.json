@@ -9,10 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.45.1",
+    "@supabase/supabase-js": "^2.47.10",
+    "algoliasearch": "^5.18.0",
+    "latest": "^0.2.0",
+    "latest-version": "^9.0.0",
     "next": "14.2.5",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "version": "^0.1.2"
   },
   "devDependencies": {
     "eslint": "^8",
