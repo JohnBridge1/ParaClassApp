@@ -4,7 +4,7 @@ Para Athletics Classification App
 
 This application is focused on enabling the general public to understand what are the different classifications within the Para sport means (what disability each classification represents) and how each classification is unique. It Educates people about the Paralympic classifications and promotes inclusivity and awareness.
 
-Here's a basic outline of how you can structure this app: /\*\*\*
+Here's a basic outline of what the structure of this app could look like: /\*\*\*
 
 1. App Structure
 
