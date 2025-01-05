@@ -1,3 +1,4 @@
+//Algolia Search
 import React from "react";
 import algoliasearch from "algoliasearch/lite";
 
