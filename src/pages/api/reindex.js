@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     // 1. Get data from Supabase
     const { data: classifications, error } = await supabase
       .from("classificationdata")
-      .select("event_code, class_code, npc, event_name");
+      .select("event_code, class_code, event_name");
 
     if (error) {
       throw new Error(error.message);
@@ -17,8 +17,8 @@ export default async function handler(req, res) {
     //    (Use your App ID and Admin Key on the SERVER side only)
     //    IMPORTANT: Do not use NEXT_PUBLIC_ prefix for your ADMIN key
     const client = algoliasearch(
-      process.env.ALGOLIA_APP_ID, // from your .env.local
-      process.env.ALGOLIA_ADMIN_API_KEY // from your .env.local
+      process.env.NEXT_PUBLIC_ALGOLIA_APP_ID, // from your .env
+      process.env.ALGOLIA_ADMIN_API_KEY // from your .env
     );
 
     // 3. Reference (or create) the index in Algolia
