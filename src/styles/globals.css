@@ -31,3 +31,76 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Add these styles after your existing CSS */
+.hide-content {
+  display: none;
+}
+
+.hit-item {
+  padding: 1.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  margin-bottom: 0.75rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hit-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hit-title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+  color: #1e40af;
+}
+
+.hit-description {
+  color: #4b5563;
+}
+
+#searchbox .ais-SearchBox-form {
+  display: flex;
+  max-width: 100%;
+  border: 2px solid #e5e7eb;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: white;
+}
+
+#searchbox .ais-SearchBox-input {
+  flex-grow: 1;
+  padding: 1.25rem;
+  font-size: 1.125rem;
+  border: none;
+  outline: none;
+}
+
+#searchbox .ais-SearchBox-submit,
+#searchbox .ais-SearchBox-reset {
+  padding: 0 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  transition: color 0.2s ease;
+}
+
+#searchbox .ais-SearchBox-submit:hover,
+#searchbox .ais-SearchBox-reset:hover {
+  color: #1e40af;
+  background-color: #f8fafc;
+}
+
+/* Add styles for the Algolia powered by badge */
+#algolia-footer .ais-PoweredBy {
+  justify-content: center;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 2rem;
+}
