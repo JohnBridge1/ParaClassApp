@@ -16,7 +16,16 @@ export default function Home() {
         console.log("deferred.");
         console.error(error);
       } else {
-        setData(data);
+        // Remove duplicates based on a combination of fields that should be unique
+        const uniqueData = data.reduce((acc, current) => {
+          const key = `${current.event_code}-${current.name}-${current.date}-${current.event_name}`;
+          if (!acc[key]) {
+            acc[key] = current;
+          }
+          return acc;
+        }, {});
+        
+        setData(Object.values(uniqueData));
       }
     }
 
@@ -24,7 +33,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <div style={{ paddingBottom: "100px" }}>
       <table
         style={{
           borderCollapse: "collapse",

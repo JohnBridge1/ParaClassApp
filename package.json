@@ -11,18 +11,17 @@
     "algolia-index": "node scripts/bulkIndexAlgolia.js"
   },
   "dependencies": {
+    "@algolia/client-search": "^5.20.0",
     "@supabase/supabase-js": "^2.47.15",
-    "algoliasearch": "^5.19.0",
+    "algoliasearch": "^5.20.0",
     "dotenv": "^16.4.7",
     "instantsearch.css": "^8.5.1",
-    "instantsearch.js": "^4.77.0",
     "latest": "^0.2.0",
     "latest-version": "^9.0.0",
     "next": "^15.1.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-instantsearch": "^7.15.0",
-    "react-instantsearch-dom": "^6.40.4",
+    "react-instantsearch": "^7.15.3",
     "react-instantsearch-router-nextjs": "^7.15.0",
     "version": "^0.0.1"
   },
