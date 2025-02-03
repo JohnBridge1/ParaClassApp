@@ -6,6 +6,11 @@ export default function Quiz() {
   const [score, setScore] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [showExplanation, setShowExplanation] = useState(false);
+
+  console.log('Raw disabilityData:', disabilityData);
+  console.log('Categories:', Object.values(disabilityData));
+  console.log('First category color:', Object.values(disabilityData)[0]?.color);
 
   const categories = Object.values(disabilityData);
 
@@ -21,7 +26,12 @@ export default function Quiz() {
     if (selectedOption === currentQuestions[currentQuestion].correctAnswer) {
       setScore(score + 1);
     }
+    setShowExplanation(true);
+  };
 
+  const handleNextQuestion = () => {
+    setShowExplanation(false);
+    const currentQuestions = disabilityData[selectedCategory].questions;
     if (currentQuestion + 1 < currentQuestions.length) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
@@ -71,6 +81,12 @@ export default function Quiz() {
             <span className="text-sm text-gray-500">
               Question {currentQuestion + 1} of {currentQuestions.length}
             </span>
+            <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+              <div 
+                className="bg-blue-600 h-2.5 rounded-full" 
+                style={{ width: `${((currentQuestion + 1) / currentQuestions.length) * 100}%` }}
+              ></div>
+            </div>
           </div>
           
           <h2 className="text-xl mb-4">{currentQuestions[currentQuestion].question}</h2>
@@ -81,11 +97,27 @@ export default function Quiz() {
                 key={index}
                 onClick={() => handleAnswer(index)}
                 className="w-full text-left p-3 rounded border border-gray-300 hover:bg-blue-50 transition-colors bg-gradient-to-r from-blue-100 to-blue-50 mb-2"
+                disabled={showExplanation}
               >
                 {option}
               </button>
             ))}
           </div>
+
+          {showExplanation && (
+            <div className="mt-4">
+              <div className="p-4 rounded-lg bg-blue-50 border border-blue-200">
+                <p className="font-medium mb-2">Explanation:</p>
+                <p>{currentQuestions[currentQuestion].explanation}</p>
+              </div>
+              <button
+                onClick={handleNextQuestion}
+                className="mt-4 bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition-colors"
+              >
+                {currentQuestion + 1 < currentQuestions.length ? 'Next Question' : 'See Results'}
+              </button>
+            </div>
+          )}
         </div>
       ) : (
         <div className="bg-white rounded-lg shadow-lg p-6 text-center">

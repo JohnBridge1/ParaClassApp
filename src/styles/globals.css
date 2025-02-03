@@ -21,11 +21,11 @@ body {
   background: rgb(var(--background-start-rgb));
 }
 
-@layer utilities {
+ @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-}
+} 
 
 /* Add these styles after your existing CSS */
 .hide-content {
