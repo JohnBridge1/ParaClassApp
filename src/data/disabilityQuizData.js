@@ -4,9 +4,105 @@ export const disabilityData = {
     title: "T/F11-13",
     description: "Visual Impairments",
     color: "bg-blue-500",
-    details: "Athletes with visual impairments compete in three sport classes: T/F11 (no light perception to light perception), T/F12 (limited visual acuity up to 2/60), and T/F13 (visual acuity from 2/60 to 6/60).",
+    detailedInfo: {
+      mainDescription: "Athletes with visual impairments compete in three sport classes based on their level of visual acuity and field of vision.",
+      classificationProcess: "Athletes undergo thorough vision testing by certified classifiers to determine their appropriate category.",
+      eligibilityCriteria: [
+        "Must have an eligible impairment that leads to competitive limitation",
+        "Vision impairment must be permanent and verifiable",
+        "Must meet minimum impairment criteria"
+      ]
+    },
+    multimedia: {
+      images: [
+        {
+          url: "/images/visual/classification-testing.jpg",
+          alt: "Vision classification testing process",
+          description: "An athlete undergoing visual classification assessment"
+        }
+      ],
+      videos: [
+        {
+          url: "https://example.com/visual-classification-explained",
+          title: "Understanding T11-13 Classifications",
+          duration: "3:45"
+        }
+      ],
+      interactiveDiagrams: [
+        {
+          id: "visual-field-comparison",
+          title: "Visual Field Comparison Tool",
+          description: "Interactive diagram showing different visual fields in T11-13"
+        }
+      ]
+    },
+    featuredAthletes: [
+      {
+        name: "David Brown",
+        country: "USA",
+        classification: "T11",
+        achievements: [
+          "Paralympic Gold Medalist Tokyo 2020",
+          "World Record Holder 100m T11"
+        ],
+        story: "David Brown became the first totally blind athlete to run 100m in under 11 seconds...",
+        image: "/athletes/david-brown.jpg"
+      }
+    ],
+    learningResources: {
+      beginnerGuide: "Basic introduction to visual impairment classifications",
+      technicalGuide: "Detailed technical criteria for classification",
+      commonMisconceptions: [
+        "All visually impaired athletes compete together",
+        "Guide runners are optional for T11 athletes"
+      ],
+      factSheets: [
+        {
+          title: "Understanding Visual Acuity",
+          content: "Detailed explanation of how visual acuity is measured..."
+        }
+      ]
+    },
+    interactiveElements: {
+      simulationTools: [
+        {
+          id: "vision-simulator",
+          description: "Experience different levels of visual impairment"
+        }
+      ],
+      practiceTests: [
+        {
+          id: "classification-practice",
+          type: "Match athletes to classifications"
+        }
+      ]
+    },
+    accessibility: {
+      audioDescriptions: true,
+      screenReaderNotes: "Detailed notes for screen reader users",
+      keyboardNavigation: true,
+      highContrastMode: true
+    },
+    community: {
+      discussionTopics: [
+        {
+          title: "Guide Running Techniques",
+          participants: 45,
+          lastActive: "2024-03-20"
+        }
+      ],
+      expertInsights: [
+        {
+          expert: "Dr. Jane Smith",
+          role: "Paralympic Classifier",
+          insight: "Understanding the importance of standardized classification..."
+        }
+      ]
+    },
     questions: [
       {
+        difficulty: "beginner",
+        points: 1,
         question: "What is the classification T11-13 primarily used for in Paralympics?",
         options: [
           "Intellectual impairments",
@@ -15,7 +111,19 @@ export const disabilityData = {
           "Hearing impairments"
         ],
         correctAnswer: 1,
-        explanation: "T11-13 classifications are used for athletes with visual impairments, where T11 represents complete or near complete blindness, T12 severe visual impairment, and T13 moderate visual impairment."
+        explanation: "T11-13 classifications are used for athletes with visual impairments, where T11 represents complete or near complete blindness, T12 severe visual impairment, and T13 moderate visual impairment.",
+        feedback: {
+          correct: "Excellent! You understand the basic classification category.",
+          incorrect: "Remember that T11-13 specifically relates to visual impairments. Each number represents a different level of visual capacity."
+        },
+        hints: [
+          "Think about the sense that's most affected",
+          "Consider why guide runners are used in some cases"
+        ],
+        relatedContent: {
+          videoId: "visual-basics-101",
+          articleUrl: "understanding-visual-classifications"
+        }
       },
       {
         question: "Which class represents athletes with the most severe visual impairment?",
@@ -766,5 +874,61 @@ export const disabilityData = {
         explanation: "Equipment regulations allow for specific modifications based on the athlete's functional ability and classification, while maintaining fair competition."
       }
     ]
+  }
+};
+
+// New helper functions to support enhanced features
+export const quizHelpers = {
+  // Difficulty progression
+  calculateUserLevel: (previousScores) => {
+    // Logic to determine user's skill level
+  },
+
+  // Interactive feedback
+  generateFeedback: (answer, difficulty, previousAttempts) => {
+    // Personalized feedback logic
+  },
+
+  // Accessibility
+  getAccessibleContent: (content, userPreferences) => {
+    // Adapt content based on accessibility needs
+  },
+
+  // Learning path
+  suggestNextTopic: (userHistory, currentScore) => {
+    // Recommend next learning area
+  }
+};
+
+export const classificationInfo = {
+  physicalImpairments: {
+    hypertonia: {
+      name: "Hypertonia",
+      description: "Increased muscle tension and reduced ability to stretch",
+      examples: ["Cerebral Palsy", "Traumatic brain injury", "Stroke"],
+      classifications: ["T/F31-34", "T/F35-38"],
+      details: "Athletes with hypertonia may compete in either wheelchair or standing events depending on severity..."
+    },
+    ataxia: {
+      name: "Ataxia",
+      description: "Lack of muscle coordination affecting movement",
+      examples: ["Cerebral Palsy", "Friedreich's ataxia"],
+      classifications: ["T/F31-34", "T/F35-38"],
+      details: "Ataxia affects balance and precise movements..."
+    },
+    // ... other impairment types
+  },
+  visualImpairments: {
+    description: "Impairment ranging from partial vision loss to total blindness",
+    classifications: {
+      B1: "No vision",
+      B2: "Up to 2/60 visual acuity",
+      B3: "Under 6/60 visual acuity"
+    }
+  },
+  intellectualImpairments: {
+    description: "Significant limitation in intellectual functioning and adaptive behavior",
+    examples: ["Down syndrome", "Developmental delay"],
+    classifications: ["T/F20"]
   }
 }; 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../config/supabaseClient";
+import supabase from "../config/supabaseClient";
 
 export default function Classifications() {
   const [classifications, setClassifications] = useState([]);
@@ -8,32 +8,31 @@ export default function Classifications() {
   const [expandedCard, setExpandedCard] = useState(null);
 
   useEffect(() => {
-    async function fetchClassifications() {
-      try {
-        const { data, error } = await supabase
-          .from("classificationdata")
-          .select("class_code, event_name")
-          .order('class_code')
-          // Remove duplicates by class_code and event_name
-          .then(({ data }) => ({
-            data: data.filter((item, index, self) =>
-              index === self.findIndex((t) => (
-                t.class_code === item.class_code && t.event_name === item.event_name
-              ))
-            )
-          }));
-
-        if (error) throw error;
-        setClassifications(data);
-      } catch (error) {
-        console.error("Error fetching classifications:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
     fetchClassifications();
   }, []);
+
+  async function fetchClassifications() {
+    try {
+      const { data, error } = await supabase
+        .from("classificationdata")
+        .select("class_code, event_name")
+        .order('class_code');
+
+      if (error) throw error;
+
+      const uniqueData = data.filter((item, index, self) =>
+        index === self.findIndex((t) => (
+          t.class_code === item.class_code && t.event_name === item.event_name
+        ))
+      );
+
+      setClassifications(uniqueData);
+    } catch (error) {
+      console.error("Error fetching classifications:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   const handleCardClick = async (classCode) => {
     // Toggle card expansion

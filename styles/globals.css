@@ -1,0 +1,33 @@
+/* Search Results Styling */
+.ais-Hits-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ais-SearchBox-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+.ais-SearchBox-submit,
+.ais-SearchBox-reset {
+  padding: 0;
+  overflow: visible;
+  font: inherit;
+  line-height: normal;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.hit-item mark {
+  background: rgba(59, 130, 246, 0.2);
+  padding: 0 2px;
+  border-radius: 2px;
+} 
