@@ -68,13 +68,21 @@ This application is focused on enabling the general public to understand what ar
 ## 🔧 Development Stack
 
 ### **Front-End**
-- Next.js (for cross-platform development)
+<span>
+<img align="left" alt="TypeScript" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg" />
+<img align="left" alt="CSS" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" />
+<img align="left" alt="JavaScript" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" />
+<img align="left" alt="Next.js" width="30px" style="padding-right:10px;" src="https://raw.githubusercontent.com/github/explore/main/topics/nextjs/nextjs.png" />
+</span>
+<br clear="left"/>
 
 ### **Back-End**
 - Subabase.
 
 ### **Database**
-- Subabase.
+<img align="left" alt="PostgreSQL" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg" />
+<img align="left" alt="Python" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-plain.svg" />
+<br clear="left"/>
 
 ### **APIs**
 - Real-time updates on Paralympic events and athlete news
