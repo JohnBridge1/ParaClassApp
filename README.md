@@ -46,22 +46,7 @@ This application is focused on enabling the general public to understand what ar
 ---
 
 ## 🏋️‍♂️ Classifications Overview
-
-### **Physical Impairments**
-- **Hypertonia**: Increased muscle tension, affecting movement. *(e.g., Cerebral Palsy, Stroke)*
-- **Ataxia**: Lack of muscle coordination. *(e.g., Friedreich’s Ataxia)*
-- **Athetosis**: Slow, involuntary movements. *(e.g., Cerebral Palsy)*
-- **Limb Deficiency**: Absence of bones or joints. *(e.g., Amputation due to trauma)*
-- **Short Stature**: Reduced height due to bone abnormalities. *(e.g., Achondroplasia)*
-- **Muscle Power Impairment**: Reduced force generation. *(e.g., Spinal Cord Injury, Muscular Dystrophy)*
-
-### **Visual Impairments**
-- **B1**: No vision
-- **B2**: Up to 2/60 visual acuity
-- **B3**: Under 6/60 visual acuity
-
-### **Intellectual Impairments**
-- **Intellectual Disability**: Significant limitation in cognitive functioning. *(e.g., Learning Difficulties
+[paralympic_classifications](https://github.com/JohnBridge1/table)
 
 ---
 
