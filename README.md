@@ -46,7 +46,7 @@ This application is focused on enabling the general public to understand what ar
 ---
 
 ## 🏋️‍♂️ Classifications Overview
-[paralympic_classifications](https://github.com/JohnBridge1/table)
+[Paralympic Classifications](https://github.com/JohnBridge1/table)
 
 ---
 
