@@ -60,9 +60,45 @@ export default function Home() {
         },
       }),
       configure({
-        hitsPerPage: 8,
+        hitsPerPage: 4,
+        distinct: true,
       }),
     ]);
+
+    // Simple middleware to deduplicate results
+    search.use(() => ({
+      render({ results }) {
+        if (results && results.hits) {
+          const uniqueHits = [];
+          const seen = new Set();
+          
+          for (const hit of results.hits) {
+            if (!hit.class_code) {
+              uniqueHits.push(hit);
+              continue;
+            }
+            
+            const code = hit.class_code.toUpperCase().replace(/\s+/g, '');
+            if (!seen.has(code)) {
+              seen.add(code);
+              uniqueHits.push(hit);
+            }
+          }
+          
+          results.hits = uniqueHits;
+          
+          // Sort alphabetically by class code
+          results.hits.sort((a, b) => {
+            if (!a.class_code) return 1;
+            if (!b.class_code) return -1;
+            return a.class_code.localeCompare(b.class_code);
+          });
+        }
+      },
+      subscribe() { return () => {}; },
+      unsubscribe() {},
+      onStateChange() {}
+    }));
 
     search.on('render', () => {
       const query = search.helper?.state.query || '';

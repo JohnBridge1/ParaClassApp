@@ -24,37 +24,67 @@ async function syncData() {
 
     console.log(`Fetched ${records.length} records from Supabase`);
 
-    // Remove duplicates before indexing
-    const uniqueRecords = records.reduce((acc, current) => {
-      const key = `${current.event_code}-${current.name}-${current.date}-${current.event_name}`;
-      if (!acc[key]) {
-        acc[key] = current;
+    // Create a map of unique classification codes
+    const classificationMap = new Map();
+    
+    // First pass: collect all class codes and their associated data
+    records.forEach(record => {
+      if (!record.class_code) return;
+      
+      // Normalize the class code: trim whitespace, convert to uppercase, remove spaces
+      const normalizedClassCode = record.class_code.trim().toUpperCase().replace(/\s+/g, '');
+      
+      // If we haven't seen this class code or the current record has more complete data
+      if (!classificationMap.has(normalizedClassCode) || 
+          (record.event_name && !classificationMap.get(normalizedClassCode).event_name)) {
+        
+        // Create a clean classification record
+        const classRecord = {
+          ...record,
+          class_code: normalizedClassCode,
+          record_type: 'classification'
+        };
+        
+        classificationMap.set(normalizedClassCode, classRecord);
       }
-      return acc;
-    }, {});
-
-    const objectsToIndex = Object.values(uniqueRecords).map((record) => ({
-      objectID: record.id,
-      event_code: record.event_code,
+    });
+    
+    // Convert the map to an array of classification records
+    const classificationRecords = Array.from(classificationMap.values());
+    
+    console.log(`Created ${classificationRecords.length} unique classification records`);
+    
+    // Prepare records for indexing
+    const objectsToIndex = classificationRecords.map((record, index) => ({
+      objectID: `class_${index}_${record.class_code}`,
       class_code: record.class_code,
-      name: record.name,
-      npc: record.npc,
-      region: record.region,
-      birth: record.birth,
-      result: record.result,
-      date: record.date,
-      city: record.city,
-      country: record.country,
-      event_name: record.event_name,
-      wind: record.wind,
-      rank: record.rank
+      sport_name: record.sport_name || record.event_name || '',
+      event_name: record.event_name || '',
+      brief_description: record.brief_description || `Paralympic classification ${record.class_code}`,
+      record_type: 'classification'
     }));
 
-    console.log(`Preparing to index ${objectsToIndex.length} unique records to Algolia`);
+    console.log(`Preparing to index ${objectsToIndex.length} unique classification records to Algolia`);
 
     // Clear existing index
     await index.clearObjects();
     console.log("Cleared existing index");
+
+    // Configure index settings for better search
+    await index.setSettings({
+      searchableAttributes: [
+        'class_code',
+        'sport_name',
+        'event_name'
+      ],
+      attributesForFaceting: [
+        'class_code',
+        'sport_name',
+        'record_type'
+      ],
+      distinct: true,
+    });
+    console.log("Updated index settings");
 
     // Index new records
     const indexingResponse = await index.saveObjects(objectsToIndex);
